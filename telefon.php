@@ -23,31 +23,50 @@ input:hover{
 }
 </style>
 <div>
-<form>
-<input type="submit" name="1" value="  1  
-   ">
-<input type="submit" name="2" value="2
-ABC">
-<input type="submit" name="3" value="3
-DEF"><br>
-<input type="submit" name="4" value="4
-GHI">
-<input type="submit" name="5" value="5
-JKL">
-<input type="submit" name="6" value="6
-MNO"><br>
-<input type="submit" name="7" value="7
-PQRS">
-<input type="submit" name="8" value="8
-TUV">
-<input type="submit" name="9" value="9
-WXYZ"><br>
-<input type="submit" name="0" value="  0  
-   ">
-</form>
-</div>
-<?php
+<form method="post">
+    <input type="hidden" name="action" value="submit" />
 
+<input id="1id" type="submit" name="submit" value="  1  
+   ">
+
+<input id="2id" type="submit" name="submit" value="2
+ABC">
+
+<input id="3id" type="submit" name="submit" value="3
+DEF"><br>
+
+<input id="4id" type="submit" name="submit" value="4
+GHI">
+
+<input id="5id" type="submit" name="submit" value="5
+JKL">
+
+<input id="6id" type="submit" name="submit" value="6
+MNO"><br>
+
+<input id="7id" type="submit" name="submit" value="7
+PQRS">
+
+<input id="8id" type="submit" name="submit" value="8
+TUV">
+
+<input id="9id" type="submit" name="submit" value="9
+WXYZ"><br>
+
+<input id="0id" type="submit" name="submit" value="  0  
+   ">
+
+</form>
+
+</div>
+
+<?php
+if (isset($_POST['action'])) {
+    $value=explode($_POST['submit'], '
+    ');
+   // var_dump($value);
+    echo '<br />The ' . $_POST['submit'] . ' submit button was pressed<br />';
+}
 
 
 ///$food = 'cake';
