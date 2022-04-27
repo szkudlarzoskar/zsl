@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <body>
@@ -53,8 +56,12 @@ TUV">
 <input id="9id" type="submit" name="submit" value="9
 WXYZ"><br>
 
-<input id="0id" type="submit" name="submit" value="  0  
-   ">
+<input id="0id" type="submit" name="submit" value="0
+
+"><br><br>
+<input id="sid"type="submit" name="submit" value=" space ">
+<br><br>
+<input type="submit" name="reset" value="reset">
 
 </form>
 
@@ -62,45 +69,64 @@ WXYZ"><br>
 
 <?php
 if (isset($_POST['action'])) {
-    $value=explode($_POST['submit'], '
-    ');
-   // var_dump($value);
-    echo '<br />The ' . $_POST['submit'] . ' submit button was pressed<br />';
+   // $value=explode($_POST['submit'], ' ');
+    //var_dump(substr($_POST['submit'], 0, 1));
+  //  echo '<br />The ' . $_POST['submit'] . ' submitqween was pressed<br />';
+
 }
 
+if (!isset($_SESSION['input'])) {
+    $_SESSION['input']= '';
+}
+@$_SESSION['input'].=substr($_POST['submit'], 0, 1);
 
-///$food = 'cake';
+if (isset($_POST['reset'])){
+    session_destroy();
+}
 
-//$return_value = match ($) {
- //   '2' => 'A',
-  //  '22' => 'B',
-    //'222' => 'C',
- //   '3' => 'D',
- //   '33' => 'E',
-  //  '333' => 'F',
-  //  '4' => 'G',
-  //  '44' => 'H',
-  //  '444' => 'I',
-  //  '5' => 'J',
-  //  '55' => 'K',
-  //  '555' => 'L',
-  //  '6' => 'M',
-  //  '66' => 'N',
-   // '666' => 'O',
-   // '7' => 'P',
-   // '77' => 'Q',
-   // '777' => 'R',
-   // '7777' => 'S',
-    //'8' => 'T',
-   // '88' => 'U',
- //   '888' => 'V',
- //   '9' => 'W',
- //   '99' => 'X',
-  //  '999' => 'Y',
-   // '9999' => 'Z',
-//};
+//echo $_SESSION['input'];
+
+$result=$_SESSION['input'];
+//echo $result;
+//var_dump($result);
+$letters = explode(' ', $result);
+$return_value = '';
+foreach ($letters as $letter) {
+    //var_dump($letter);
+    $return_value .= match ($letter) {
+        '2' => 'A',
+        '22' => 'B',
+        '222' => 'C',
+        '3' => 'D',
+        '33' => 'E',
+        '333' => 'F',
+        '4' => 'G',
+        '44' => 'H',
+        '444' => 'I',
+        '5' => 'J',
+        '55' => 'K',
+        '555' => 'L',
+        '6' => 'M',
+        '66' => 'N',
+        '666' => 'O',
+        '7' => 'P',
+        '77' => 'Q',
+        '777' => 'R',
+        '7777' => 'S',
+        '8' => 'T',
+        '88' => 'U',
+        '888' => 'V',
+        '9' => 'W',
+        '99' => 'X',
+        '999' => 'Y',
+        '9999' => 'Z',
+        default=>'',
+     };
+}
 
 //var_dump($return_value);
+echo $return_value;
+//session_destroy();
 
 
 
